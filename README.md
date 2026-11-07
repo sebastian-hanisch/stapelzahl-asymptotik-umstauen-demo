@@ -1,7 +1,6 @@
 # Viele Stapel: wird die Untergrenze scharf? – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-stapelzahl-asymptotik-umstauen-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-stapelzahl-asymptotik-umstauen-demo.streamlit.app/)**
 
 Zehntes Stück der Konzepte-Reihe **„Umstauen: Untergrenze und Suche“** für die Website „Sebastian Hanisch – Operations Research und Machine Learning“. [Stück 2](https://sebastianhanisch-untergrenze-umstauen-demo.streamlit.app/) hat die **Untergrenze** gebaut: die Zahl der **Blocker** (Container über einem früher abzurufenden). Wie nah liegt das **Optimum** an dieser Zahl, wenn die Bucht **viele Stapel** hat? Die Regel „engste Passung“ aus [Stück 1](https://sebastianhanisch-umstauen-regeln-demo.streamlit.app/) liefert eine **obere** Schranke des Optimums, die Zählung die **untere**. Die Demo **rechnet das live** über eine Stichprobe von Buchten und misst vorberechnet, **wie schnell der Abstand im Verhältnis schrumpft**, **ob er auch absolut schrumpft** und **wie es mit dem exakt gerechneten Optimum aussieht**.
 
