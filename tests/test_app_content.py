@@ -47,7 +47,7 @@ def test_default_page_tables_quote_the_stored_numbers():
 
 def test_default_page_verdicts_for_the_default_layers():
     text = _text(_run())
-    assert "3 Lagen: Die relative Lücke fällt von 47 % bei 3 Stapeln auf 1,4 % bei 48. Höchstens 5,0 % beträgt sie ab 24 Stapeln." in text
+    assert "3 Lagen: Die relative Lücke fällt von 47 % bei 3 Stapeln auf 1,4 % bei 48. Höchstens 5,0 % beträgt sie ab 24 Stapeln (in dieser Stichprobe; nahe der Grenze liegt der Unterschied im Messrauschen)." in text
     assert "3 Lagen: Die relative Lücke fällt von 47 % auf 1,4 %, die absolute von 1,64 auf 0,76 Hübe;" in text and "Auch die absolute Lücke schrumpft." in text
     assert "3 × 3: Das Optimum liegt im Mittel 38 % über der Untergrenze" in text
 
@@ -57,7 +57,7 @@ def test_high_stacks_preset_shows_that_the_absolute_gap_stays():
     assert _metrics(at)["Zählung beweist"] == ("0 von 100", "Regel = LB1") and _metrics(at)["Optimum (Mittel)"][0] == "nicht gerechnet"
     text = _text(at)
     assert "5 Lagen: Die relative Lücke fällt von 98 % bei 3 Stapeln auf 6,7 % bei 48. Höchstens 5,0 % beträgt sie bis 48 Stapel nicht." in text
-    assert any("Die absolute Lücke bleibt" in w.value for w in at.warning) and any("noch nicht scharf" in i.value for i in at.info)
+    assert any("Die absolute Lücke sinkt nur wenig oder bleibt" in w.value for w in at.warning) and any("noch nicht scharf" in i.value for i in at.info)
 
 
 def test_exact_preset_shows_the_live_optimum_line():

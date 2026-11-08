@@ -37,9 +37,9 @@ def _asym(rel):
 def test_curve_verdict_three_states_and_numbers():
     asym = _asym(lambda s, l: 0.5 / s * (l - 1))                                           # 3 Lagen: unter 5 % ab 20 Stapeln -> Stufe 24
     kind, text = ev.verdict_curve(asym, 3)
-    assert kind == "info" and text == "3 Lagen: Die relative Lücke fällt von 33 % bei 3 Stapeln auf 2,1 % bei 48. Höchstens 5,0 % beträgt sie ab 24 Stapeln."
+    assert kind == "info" and text == "3 Lagen: Die relative Lücke fällt von 33 % bei 3 Stapeln auf 2,1 % bei 48. Höchstens 5,0 % beträgt sie ab 24 Stapeln (in dieser Stichprobe; nahe der Grenze liegt der Unterschied im Messrauschen)."
     kind, text = ev.verdict_curve(asym, 5)                                                 # 2 / s: bei 48 Stapeln 4,2 %, bei 32 6,3 %
-    assert kind == "info" and text.endswith("ab 48 Stapeln.") and ev.sharp_from(asym, 5) == 48
+    assert kind == "info" and "ab 48 Stapeln (in dieser Stichprobe" in text and ev.sharp_from(asym, 5) == 48
     kind, text = ev.verdict_curve(_asym(lambda s, l: 3.0 / s), 5)                         # bei 48 Stapeln 6,3 %: nie unter 5 %
     assert kind == "warning" and text == "5 Lagen: Die relative Lücke fällt von 100 % bei 3 Stapeln auf 6,3 % bei 48. Höchstens 5,0 % beträgt sie bis 48 Stapel nicht."
     kind, text = ev.verdict_curve(_asym(lambda s, l: 0.01), 2)
@@ -66,7 +66,7 @@ def test_absolute_verdict_two_states_and_numbers():
     assert kind == "info" and text == ("3 Lagen: Die relative Lücke fällt von 50 % auf 2,0 %, die absolute von 1,63 auf 0,75 Hübe; die Zählung beweist das Optimum in 44 von 200 Buchten "
                                        "bei 3 Stapeln und in 86 bei 48. Auch die absolute Lücke schrumpft.")
     kind, text = ev.verdict_absolute(_abs_asym(8.08, 8.74, last_eq=0, first_eq=0), 5)
-    assert kind == "warning" and text.endswith("Die absolute Lücke bleibt: Das Verhältnis wird kleiner, weil die Untergrenze wächst, nicht weil die Lücke schrumpft.")
+    assert kind == "warning" and text.endswith("Die absolute Lücke sinkt nur wenig oder bleibt (bei 48 Stapeln noch mindestens halb so groß wie bei 3): Das Verhältnis wird kleiner, weil die Untergrenze wächst, nicht weil die Lücke wesentlich schrumpft.")
     assert ev.verdict_absolute(_abs_asym(2.0, 1.0), 4)[0] == "warning" and C.ABS_KEEP == 0.5            # genau die Hälfte zählt noch als „bleibt“
     assert ev.verdict_absolute(_abs_asym(2.0, 0.99), 4)[0] == "info"
 

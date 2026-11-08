@@ -172,7 +172,7 @@ def verdict_curve(asym: dict, layers: int) -> tuple[str, str]:
         return "warning", text + f" Höchstens {percent_text(C.SHARP)} beträgt sie bis {last} Stapel nicht."
     if s == first:
         return "success", text + f" Höchstens {percent_text(C.SHARP)} beträgt sie schon bei {first} Stapeln."
-    return "info", text + f" Höchstens {percent_text(C.SHARP)} beträgt sie ab {s} Stapeln."
+    return "info", text + f" Höchstens {percent_text(C.SHARP)} beträgt sie ab {s} Stapeln (in dieser Stichprobe; nahe der Grenze liegt der Unterschied im Messrauschen)."
 
 
 def verdict_absolute(asym: dict, layers: int) -> tuple[str, str]:
@@ -182,7 +182,7 @@ def verdict_absolute(asym: dict, layers: int) -> tuple[str, str]:
     text = (f"{layers} Lagen: Die relative Lücke fällt von {percent_text(a['rel_gap'])} auf {percent_text(b['rel_gap'])}, die absolute von {dec(a['abs_gap'])} auf {dec(b['abs_gap'])} Hübe; "
             f"die Zählung beweist das Optimum in {a['greedy_eq_lb1']} von {a['n']} Buchten bei {first} Stapeln und in {b['greedy_eq_lb1']} bei {last}.")
     if b["abs_gap"] >= C.ABS_KEEP * a["abs_gap"]:
-        return "warning", text + " Die absolute Lücke bleibt: Das Verhältnis wird kleiner, weil die Untergrenze wächst, nicht weil die Lücke schrumpft."
+        return "warning", text + f" Die absolute Lücke sinkt nur wenig oder bleibt (bei {last} Stapeln noch mindestens halb so groß wie bei {first}): Das Verhältnis wird kleiner, weil die Untergrenze wächst, nicht weil die Lücke wesentlich schrumpft."
     return "info", text + " Auch die absolute Lücke schrumpft."
 
 

@@ -42,6 +42,6 @@ PRESET_HELP = {
     "Wenige Stapel (3 Stapel, 3 Lagen)": "9 Container: Die Regel kostet im Mittel rund die Hälfte mehr Hübe als die Zählung der Blocker.",
     "Viele Stapel (32 Stapel, 3 Lagen)": "96 Container: Die Regel liegt nur noch rund 3 % über der Zählung der Blocker.",
     "Zwei Lagen (16 Stapel, 2 Lagen)": "32 Container: Schon bei 16 Stapeln liegt die Regel unter 3 % über der Untergrenze.",
-    "Hohe Stapel (16 Stapel, 5 Lagen)": "80 Container: Das Verhältnis schrumpft langsam, die absolute Lücke bleibt bei rund 8 Hüben, die Zählung trifft nie.",
+    "Hohe Stapel (16 Stapel, 5 Lagen)": "80 Container: Das Verhältnis schrumpft langsam, die absolute Lücke bleibt bei rund 8 Hüben, die Zählung trifft in keiner dieser Buchten.",
     "Exakt: 8 Stapel, 3 Lagen": "24 Container, 50 Buchten: Das Optimum wird live gerechnet und mit der Untergrenze und der Regel verglichen.",
 }

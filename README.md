@@ -6,7 +6,7 @@ Zehntes Stück der Konzepte-Reihe **„Umstauen: Untergrenze und Suche“** für
 
 ## Warum dieses Problem
 
-Eine Untergrenze ist nur nützlich, wenn sie das Optimum nahe trifft. Bei wenigen Stapeln tut sie das nicht (bei 3 Stapeln und 3 Lagen kostet die Regel im Mittel 47 % mehr Hübe als die Zählung). Mit mehr Stapeln findet fast jeder Blocker einen Stapel mit späterem frühestem Abruf und erzeugt keinen zusätzlichen Hub: Die **relative** Lücke schrumpft (3 Lagen: 3 % bei 24, 1,4 % bei 48 Stapeln). Das ist die Aussage der Literatur (Borjian, Manshadi und Jaillet: die einfache Untergrenze wird asymptotisch scharf; aus dem Gedächtnis zugeordnet, **nicht gelesen**), hier **nachgemessen**. Aber: Das gilt für das **Verhältnis**, nicht für die **absolute** Lücke. Bei 5 Lagen bleibt sie bei rund 8 Hüben, und die Zählung beweist das Optimum dort in **keiner** Bucht. Wie schnell die Lücke schrumpft, hängt stark von den Lagen ab.
+Eine Untergrenze ist nur nützlich, wenn sie das Optimum nahe trifft. Bei wenigen Stapeln tut sie das nicht (bei 3 Stapeln und 3 Lagen kostet die Regel im Mittel 47 % mehr Hübe als die Zählung). Mit mehr Stapeln findet ein Blocker eher einen Stapel mit späterem frühestem Abruf und braucht seltener einen zusätzlichen Hub: Die **relative** Lücke schrumpft (3 Lagen: 3 % bei 24, 1,4 % bei 48 Stapeln). Das passt zur Aussage der Literatur (Borjian, Manshadi und Jaillet: das Optimum nähert sich bei wachsender Stapelzahl einer einfachen Untergrenze; aus dem Gedächtnis zugeordnet, **nicht gelesen**), hier nur für die Regel als obere Schranke bei fester Lagenzahl **nachgemessen**. Aber: Das gilt für das **Verhältnis**, nicht für die **absolute** Lücke. Bei 5 Lagen bleibt sie bei rund 8 Hüben, und die Zählung beweist das Optimum dort in fast **keiner** Bucht (2 von 2 200 in den Tabellen). Wie schnell die Lücke schrumpft, hängt stark von den Lagen ab.
 
 ## Methode
 
@@ -38,7 +38,7 @@ Alle Zahlen sind Messungen an festen Buchten, nachgerechnet in `tests/test_claim
 | 32 | 0,009 | 0,024 | 0,049 | 0,097 |
 | 48 | 0,006 | 0,014 | 0,033 | 0,067 |
 
-Die Lücke fällt bei jeder Lagenzahl mit jeder Stufe (streng monoton) und wächst mit den Lagen. **Höchstens 5 %** beträgt sie bei 2 Lagen ab **10** Stapeln, bei 3 Lagen ab **24**, bei 4 Lagen ab **32**, bei 5 Lagen **bis 48 Stapel nicht**. Zwischen 8 und 48 Stapeln fällt sie ungefähr umgekehrt proportional zur Stapelzahl (Steigung im doppeltlogarithmischen Bild rund −1,3 bei 2 und 3 Lagen, −1,1 bei 4, −0,9 bei 5).
+Die Lücke fällt bei jeder Lagenzahl über die Stufen (in den gespeicherten Zahlen streng monoton; zwischen 10 und 12 Stapeln bei 2 Lagen, 0,044 gegen 0,043, liegt der Unterschied im Rauschen) und wächst mit den Lagen. **Höchstens 5 %** beträgt sie in diesen Buchten bei 2 Lagen ab **10** Stapeln, bei 3 Lagen ab **24**, bei 4 Lagen um **32** Stapel herum (4,9 %; die 5-%-Grenze liegt dort im Messrauschen), bei 5 Lagen **bis 48 Stapel nicht**. Zwischen 8 und 48 Stapeln fällt sie ungefähr umgekehrt proportional zur Stapelzahl (Steigung im doppeltlogarithmischen Bild rund −1,4 bei 2 Lagen, −1,3 bei 3, −1,1 bei 4, −0,9 bei 5).
 
 **B: Absolut gegen relativ** (absolute Lücke = Regel − Untergrenze in Hüben, in Klammern die Zahl der Buchten von 200, in denen die Zählung das Optimum sicher trifft)
 
@@ -56,7 +56,7 @@ Die Lücke fällt bei jeder Lagenzahl mit jeder Stufe (streng monoton) und wäch
 | 32 | 0,14 (172) | 0,91 (82) | 3,04 (16) | 8,46 (0) |
 | 48 | 0,13 (174) | 0,76 (86) | 3,01 (21) | 8,75 (0) |
 
-Bei 2 und 3 Lagen schrumpft auch die absolute Lücke (bei 3 Lagen von 1,64 auf 0,76 Hübe) und der Anteil der Buchten, in denen die Zählung das Optimum beweist, wächst (3 Lagen: 22 % auf 43 %, 2 Lagen: 67 % auf 87 %). Bei **4 und 5 Lagen bleibt sie** (4 Lagen: 4,20 auf 3,01; 5 Lagen: 8,08 auf 8,75): Das Verhältnis wird kleiner, weil die Untergrenze mit der Stapelzahl wächst, nicht weil die Lücke schrumpft.
+Bei 2 und 3 Lagen schrumpft auch die absolute Lücke (bei 3 Lagen von 1,64 auf 0,76 Hübe) und der Anteil der Buchten, in denen die Zählung das Optimum beweist, wächst (3 Lagen: 22 % auf 43 %, 2 Lagen: 67 % auf 87 %). Bei **5 Lagen bleibt sie** (8,08 auf 8,75), bei 4 Lagen sinkt sie nur von 4,20 auf 3,01 Hübe: Das Verhältnis wird kleiner, weil die Untergrenze mit der Stapelzahl wächst, nicht weil die Lücke wesentlich schrumpft.
 
 **C: Exakt gerechnet** (60 Buchten je Zelle, Optimum aus der Suche mit LB2, Knotenlimit 400 000; Mittelwerte)
 
@@ -76,7 +76,7 @@ Bei 2 und 3 Lagen schrumpft auch die absolute Lücke (bei 3 Lagen von 1,64 auf 0
 | 6 × 4 (59, 1 am Limit) | 11,36 | 12,44 | 14,42 | 14,80 | 1 | 27 % | 2,6 % | 41 |
 | 8 × 4 (59, 1 am Limit) | 15,22 | 15,95 | 17,92 | 18,27 | 2 | 18 % | 2,0 % | 44 |
 
-Auch das **exakte** Verhältnis Optimum / LB1 − 1 fällt mit der Stapelzahl (3 Lagen: 38 % bei 3, 7,5 % bei 12 Stapeln; 4 Lagen: 57 % bei 3, 18 % bei 8). Die Regel liegt dabei nie mehr als 9,4 % über dem Optimum (4 × 4), in den Zellen mit 2 Lagen trifft sie das Optimum in jeder Bucht. In keiner Bucht liegt eine Schranke außerhalb von LB1 ≤ LB2 ≤ Optimum ≤ Regel.
+Auch das **exakte** Verhältnis Optimum / LB1 − 1 fällt mit der Stapelzahl (3 Lagen: 38 % bei 3, 7,5 % bei 12 Stapeln; 4 Lagen: 57 % bei 3, 18 % bei 8). Im Mittel liegt die Regel in diesen 13 Zellen höchstens 9,4 % über dem Optimum (4 × 4); bei 2 Lagen traf sie in allen 180 gerechneten Buchten das Optimum. In keiner Bucht liegt eine Schranke außerhalb von LB1 ≤ LB2 ≤ Optimum ≤ Regel.
 
 **D: Platz** (relative Lücke bei Platz 1 bis 4, je Zelle 200 Buchten)
 
@@ -91,14 +91,14 @@ Auch das **exakte** Verhältnis Optimum / LB1 − 1 fällt mit der Stapelzahl (3
 | 4 Lagen, 16 Stapel | 0,127 | 0,110 | 0,104 | 0,101 |
 | 4 Lagen, 32 Stapel | 0,059 | 0,049 | 0,047 | 0,046 |
 
-Ab Platz 2 ändert zusätzlicher Platz kaum etwas; bei Platz 1 ist die Lücke etwas größer.
+Ab Platz 2 ändert zusätzlicher Platz nur wenig (bei 3 Lagen unter 5 %, bei 4 Lagen 7 bis 8 % relativ bis Platz 4); bei Platz 1 ist die Lücke etwas größer.
 
 | Frage | Befund |
 |---|---|
-| **Wird die Untergrenze bei vielen Stapeln scharf?** | Im Verhältnis ja: Die relative Lücke fällt von 24 bis 98 % bei 3 Stapeln auf 0,6 bis 6,7 % bei 48. Wie schnell, hängt an den Lagen: höchstens 5 % ab 10 Stapeln (2 Lagen), 24 (3), 32 (4), bis 48 nicht (5). |
-| **Und absolut?** | Nur bei 2 und 3 Lagen. Bei 4 Lagen bleibt die absolute Lücke bei rund 3 bis 4 Hüben, bei 5 Lagen bei 7 bis 9; die Zählung beweist das Optimum bei 5 Lagen in keiner Bucht (eine Ausnahme: 1 von 200 bei 5 und bei 24 Stapeln). |
-| **Stimmt das auch für das exakte Optimum?** | Ja, soweit gerechnet (bis 36 Container): Optimum über Untergrenze fällt mit der Stapelzahl, die Regel liegt höchstens 9,4 % über dem Optimum. |
-| **Hilft mehr Platz?** | Kaum: ab Platz 2 praktisch keine Änderung. |
+| **Wird die Untergrenze bei vielen Stapeln scharf?** | Im Verhältnis ja: Die relative Lücke fällt von 24 bis 98 % bei 3 Stapeln auf 0,6 bis 6,7 % bei 48. Wie schnell, hängt an den Lagen: höchstens 5 % ab 10 Stapeln (2 Lagen), 24 (3), um 32 (4; die Grenze liegt dort im Messrauschen), bis 48 nicht (5). |
+| **Und absolut?** | Nur bei 2 und 3 Lagen. Bei 4 Lagen sinkt die absolute Lücke nur langsam (rund 3 bis 4 Hübe), bei 5 Lagen bleibt sie bei 7 bis 9; die Zählung beweist das Optimum bei 5 Lagen in fast keiner Bucht (zwei Ausnahmen: je 1 von 200 bei 5 und bei 24 Stapeln). |
+| **Stimmt das auch für das exakte Optimum?** | Ja, soweit gerechnet (bis 36 Container): Optimum über Untergrenze fällt mit der Stapelzahl, die Regel liegt im Mittel höchstens 9,4 % über dem Optimum (13 Zellen). |
+| **Hilft mehr Platz?** | Wenig: ab Platz 2 bei 3 Lagen unter 5 %, bei 4 Lagen 7 bis 8 % relativ bis Platz 4. |
 
 **Presets** (Eigenschaften in `tests/test_presets.py`): „Wenige Stapel“ (3 × 3: Regel 47 % über LB1), „Viele Stapel“ (32 × 3: 2,6 %), „Zwei Lagen“ (16 × 2: 2,5 %, die Zählung beweist das Optimum in 80 von 100 Buchten), „Hohe Stapel“ (16 × 5: 18 % und 8 Hübe absolut, kein Beweis), „Exakt: 8 Stapel, 3 Lagen“ (50 Buchten, Optimum live).
 
@@ -107,7 +107,7 @@ Ab Platz 2 ändert zusätzlicher Platz kaum etwas; bei Platz 1 ist die Lücke et
 - **Messung, kein Beweis.** Die Lücke schrumpft in den Messungen im Verhältnis, belegt bis 48 Stapel und 5 Lagen; die Aussage der Literatur ist aus dem Gedächtnis zugeordnet und nicht gelesen.
 - **Obere Schranke = Regel.** „Höchstens x % über der Untergrenze“ gilt; die tatsächliche Lücke kann kleiner sein. Exakt gerechnet nur bis 36 Container (60 Buchten je Zelle, bei 6 × 4 und 8 × 4 je eine Bucht am Knotenlimit).
 - **Volle Buchten, restricted, Platz 2** in den Tabellen; teilgefüllte Buchten (kleiner Füllgrad, wie sie die Literatur betrachtet) und andere Hubmengen sind nicht gemessen; Platz wurde nur für 3 und 4 Lagen gemessen.
-- **Feste Lagenzahl.** Wächst die Stapelhöhe mit, schrumpft die relative Lücke nicht (5 Lagen, 48 Stapel: 6,7 %).
+- **Feste Lagenzahl.** Bei mehr Lagen schrumpft die Lücke langsamer (5 Lagen, 48 Stapel: 6,7 %); mit wachsender Stapelhöhe wurde nicht gemessen.
 - **Verhältnis der Mittel,** nicht Mittel der Verhältnisse; bei kleinen Stichproben (20 Buchten) schwanken die Zahlen.
 
 ## Verifikation

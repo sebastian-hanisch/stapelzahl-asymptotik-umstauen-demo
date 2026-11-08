@@ -186,7 +186,7 @@ for l_ in C.PLATZ_LAYERS:
     for s_ in C.PLATZ_STACKS:
         td.append(f"| {l_} Lagen, {s_} Stapel | " + " | ".join(ratio3(platz[platz_key(l_, e_, s_)]) for e_ in (1, 2, 3, 4)) + " |")
 st.markdown("\n".join(td))
-st.info("Ab Platz 2 ändert zusätzlicher Platz kaum etwas; bei Platz 1 ist die Lücke etwas größer. Die Tabellen oben gelten für Platz 2.")
+st.info("Ab Platz 2 ändert zusätzlicher Platz nur wenig (bei 3 Lagen unter 5 %, bei 4 Lagen 7 bis 8 % relativ bis Platz 4); bei Platz 1 ist die Lücke etwas größer. Die Tabellen oben gelten für Platz 2.")
 
 st.markdown("---")
 
@@ -200,7 +200,7 @@ st.markdown(
 | **Messung, kein Beweis** | Die Lücke schrumpft in den Messungen im Verhältnis; belegt bis 48 Stapel und 5 Lagen. Ein Satz ist das nicht; die Aussage der Literatur (Borjian, Manshadi und Jaillet) ist aus dem Gedächtnis zugeordnet und nicht gelesen. | – |
 | **Obere Schranke = Regel** | Das Optimum ist nur über die Regel von oben begrenzt; „höchstens x % über der Untergrenze“ gilt, die tatsächliche Lücke kann kleiner sein (exakt gerechnet bis 36 Container). | – |
 | **Volle Buchten, restricted, Platz 2 in den Tabellen** | Teilgefüllte Buchten (kleiner Füllgrad), andere Hubmengen (Stück 3) und anderer Platz ändern die Zahlen; Platz wurde nur für 3 und 4 Lagen gemessen. | – |
-| **Feste Lagenzahl** | Wächst die Stapelhöhe mit, schrumpft die relative Lücke nicht (bei 5 Lagen und 48 Stapeln noch 6,7 %). | – |
+| **Feste Lagenzahl** | Bei mehr Lagen schrumpft die Lücke langsamer (bei 5 Lagen und 48 Stapeln noch 6,7 %); mit wachsender Stapelhöhe wurde nicht gemessen. | – |
 | **Kleine exakte Zellen** | 60 Buchten je Zelle, bei 6 × 4 und 8 × 4 je eine Bucht am Knotenlimit; die Aussagen sind grob. | – |
 """
 )
@@ -220,7 +220,7 @@ with st.expander("📐 Mathematische Formulierung"):
 $$\frac{\text{OPT}}{\text{LB1}} - 1 \;\le\; \frac{\text{G}}{\text{LB1}} - 1 =: \rho(S, h).$$
 Die Demo misst $\bar\rho(S,h) = \bar G / \overline{\text{LB1}} - 1$ über feste Buchten (Mittel über die Buchten, Verhältnis der Mittel). **Die Messung:** $\bar\rho$ fällt mit $S$ bei jedem $h$ (ungefähr wie $1/S$), langsamer bei größerem $h$. Daraus folgt für die Stichprobe, dass das Optimum im Verhältnis immer näher an der Untergrenze liegt, **nicht** dass die absolute Lücke $\bar G - \overline{\text{LB1}}$ verschwindet: Sie bleibt bei $h = 5$ bei 8 bis 9 Hüben, während $\overline{\text{LB1}}$ mit $S$ wächst.
 
-**Warum die Lücke mit $S$ sinkt (Plausibilität, kein Beweis).** Ein Blocker erzeugt nur dann einen zweiten Hub, wenn jeder andere Stapel einen früheren Abruf enthält als er selbst (LB2, Stück 9). Mit mehr Stapeln findet fast jeder Blocker einen Stapel mit späterem frühestem Abruf, also fast nie einen zusätzlichen Hub.
+**Warum die Lücke mit $S$ sinkt (Plausibilität, kein Beweis).** Ein zweiter Hub ist sicher erzwungen, wenn jeder andere Stapel einen früheren Abruf enthält als der Blocker selbst (LB2, Stück 9). Mit mehr Stapeln wird das seltener: Ein Blocker findet eher einen Stapel mit späterem frühestem Abruf.
 
 **Literatur.** Borjian, Manshadi und Jaillet untersuchen das Relocation-Problem mit Näherungsgarantien, Asymptotik und unvollständiger Information; die Aussage „die einfache Untergrenze wird bei vielen Stapeln asymptotisch scharf“ ist aus dem Gedächtnis zugeordnet, **nicht gelesen**. Hier wird nur gemessen.
         """
